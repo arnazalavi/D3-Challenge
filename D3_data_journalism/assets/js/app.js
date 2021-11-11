@@ -19,10 +19,17 @@ function makeResponsive() {
   var svgWidth = window.innerWidth;
   var svgHeight = window.innerHeight;
 
+  // var margin = {
+  //   top: 50,
+  //   bottom: 50,
+  //   right: 50,
+  //   left: 50
+  // };
+
   var margin = {
-    top: 50,
-    bottom: 50,
-    right: 50,
+    top: 20,
+    bottom: 60,
+    right: 40,
     left: 50
   };
 
@@ -66,7 +73,7 @@ function makeResponsive() {
 
       var yHealthCareScale = d3.scaleLinear()
       // input raw values
-        .domain([0, d3.max(CensusData, d => d.healthcare)])
+        .domain([3, d3.max(CensusData, d => d.healthcare)])
         .range([height, 0]);
 
       // create axes
@@ -95,10 +102,11 @@ function makeResponsive() {
         .attr("cx", d => xPovertyScale(d.poverty))
         .attr("cy", d => yHealthCareScale(d.healthcare))
         .attr("r", "10")
-        .attr("fill", "gold")
+        .attr("fill", "blue")
         .attr("stroke-width", "1")
         .attr("stroke", "black")
-        .attr("opacity", ".9");
+        .attr("font-weight", "bold")
+        .attr("opacity", ".7");
 
 
         chartGroup.append("text")
@@ -127,7 +135,9 @@ function makeResponsive() {
        .attr("dx", d => xPovertyScale(d.poverty) -6)
        .attr("dy", d => yHealthCareScale(d.healthcare) +3)
        .attr("opacity", ".5")
-       .attr("font-size", "10px");
+       .attr("font-size", "10px")
+       .attr("fill", "white")
+       .attr("font-weight", "bold");
        
       // .attr("r", "15")
       // .attr("fill", "gold")
